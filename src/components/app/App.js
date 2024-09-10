@@ -5,6 +5,9 @@ import './app.scss';
 const App = () => {
     const [quote, setQuote] = useState("");
     const [author, setAuthor] = useState("");
+    const [colorIndex, setColorIndex] = useState("0");
+
+    const colors = ['#B0E0E6', '#AFEEEE', '#ADD8E6', '#B0C4DE', '#E6CFE6'];
 
     const getData = (url) => {
         const callbackName = 'jsonpCallback_' + Math.floor(Math.random() * 1000000);
@@ -22,9 +25,22 @@ const App = () => {
         document.body.appendChild(script);
     };
 
+    const getRandColor = () => {
+        const nextIndex = (colorIndex + 1) % colors.length;
+        setColorIndex(nextIndex);
+
+        const newColor = colors[nextIndex];
+        document.documentElement.style.setProperty('--bg-color', newColor);
+    };
+
     useEffect(() => {
         getData("https://api.forismatic.com/api/1.0/?method=getQuote&key=random&format=jsonp&lang=ru");
     }, []);
+
+    const getNewQuote = () => {
+        getData("https://api.forismatic.com/api/1.0/?method=getQuote&key=random&format=jsonp&lang=ru");
+        getRandColor();
+    }
 
     return (
         <div className="App">
@@ -34,7 +50,7 @@ const App = () => {
                 <p className="author">— {author}</p>
                 <button 
                     className="btn"
-                    onClick={() => getData("https://api.forismatic.com/api/1.0/?method=getQuote&key=random&format=jsonp&lang=ru")}
+                    onClick={() => getNewQuote()}
                 >New Quote</button>
             </div> 
         </div>

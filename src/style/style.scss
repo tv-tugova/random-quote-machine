@@ -10,5 +10,6 @@
 
 body {
     height: 100vh;
-    background-color: #DDA0DD;
+    background-color: var(--bg-color, #E6CFE6);
+    transition: background-color 1s ease;
 }

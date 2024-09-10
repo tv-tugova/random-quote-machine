@@ -1,0 +1,25 @@
+.App {
+    margin: 0 auto;
+    padding: 50px 0;
+    position: relative;
+    width: 1100px;
+    color: #DDA0DD;
+}
+.container {
+    display: grid;
+    grid-template-rows: 65px minmax(38px, auto) 33px 53px;
+    row-gap: 5px;
+}
+.text-primary {
+    text-align: center;
+    font-size: 50px;
+    color: #FFF5EE;
+}
+.quote {
+    font-size: 30px;
+    color: #FFF5EE;
+}
+.author {
+    font-size: 25px;
+    color: #FFF5EE;
+}

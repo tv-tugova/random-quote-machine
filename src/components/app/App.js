@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import './app.scss';
+
 const App = () => {
     const [quote, setQuote] = useState("");
     const [author, setAuthor] = useState("");
@@ -26,9 +28,15 @@ const App = () => {
 
     return (
         <div className="App">
-                <h1 class="">Random Quotes!</h1>
-                <p>{quote}</p>
-                <p>— {author}</p>
+            <div className="container">
+                <h1 className="text-primary">Random Quotes!</h1>
+                <p className="quote">{quote}</p>
+                <p className="author">— {author}</p>
+                <button 
+                    className="btn"
+                    onClick={() => getData("https://api.forismatic.com/api/1.0/?method=getQuote&key=random&format=jsonp&lang=ru")}
+                >New Quote</button>
+            </div> 
         </div>
     );
 }
